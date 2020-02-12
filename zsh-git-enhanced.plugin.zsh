@@ -25,22 +25,33 @@ function work_in_progress() {
   fi
 }
 
-function rename_stash() {
-  git --no-pager stash list
-  echo "Enter stash number to rename"
-  read stash_number
-
-  echo "Enter new name"
-  read new_name
-
-  stash_name="stash@{${stash_number}}"
-  echo "$stash_name"
-
-  rev=$(git rev-parse $stash_name)
-
-  git stash drop $stash_name || exit 1
-  git stash store -m "$new_name" $rev
+function red_text() {
+  echo "\e[38;2;255;0;0m$1"
 }
+
+function rename_stash() {
+    STASH_LIST=$(git --no-pager stash list)
+
+    if [ -z "$STASH_LIST" ]; then
+        red_text "Looks like you don't have any stashes in this repository, why not create your first with \"gsta\" (git stash push) "
+    else
+        echo $STASH_LIST
+        echo "Enter stash number to rename"
+        read stash_number
+
+        echo "Enter new name"
+        read new_name
+
+        stash_name="stash@{${stash_number}}"
+        echo "$stash_name"
+
+        rev=$(git rev-parse $stash_name)
+
+        git stash drop $stash_name || exit 1
+        git stash store -m "$new_name" $rev
+    fi
+}
+
 
 #
 # Aliases
