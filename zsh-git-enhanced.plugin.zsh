@@ -25,6 +25,23 @@ function work_in_progress() {
   fi
 }
 
+function rename_stash() {
+  git --no-pager stash list
+  echo "Enter stash number to rename"
+  read stash_number
+
+  echo "Enter new name"
+  read new_name
+
+  stash_name="stash@{${stash_number}}"
+  echo "$stash_name"
+
+  rev=$(git rev-parse $stash_name)
+
+  git stash drop $stash_name || exit 1
+  git stash store -m "$new_name" $rev
+}
+
 #
 # Aliases
 # (sorted alphabetically)
@@ -239,6 +256,7 @@ alias gstl='git stash list'
 alias gstp='git stash pop'
 alias gsts='git stash show --text'
 alias gstall='git stash --all'
+alias gstr=rename_stash
 alias gsu='git submodule update'
 alias gsw='git switch'
 alias gswc='git switch -c'

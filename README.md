@@ -168,6 +168,7 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | gstc                 | `git stash clear                                                                                                         `|
 | gstd                 | `git stash drop                                                                                                          `|
 | gstl                 | `git stash list                                                                                                          `|
+| gstr                 | `interactive renaming of an existing stash                                                                               `|
 | gstp                 | `git stash pop                                                                                                           `|
 | gsts                 | `git stash show --text                                                                                                   `|
 | gstall               | `git stash --all                                                                                                         `|
