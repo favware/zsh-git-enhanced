@@ -296,3 +296,4 @@ alias gdm='git duet-merge -v'
 alias gdmg='git duet-merge -v'
 
 alias grlm='git rev-list --count master..$(git_current_branch)'
+alias grlmo='git rev-list --count origin/master..$(git_current_branch)'

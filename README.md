@@ -188,6 +188,7 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | gwch                 | `git whatchanged -p --abbrev-commit --pretty=medium                                                                      `|
 | gwip                 | `git add -A; git rm \$(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]" `|
 | grlm                 | `git rev-list --count master..\$(git_current_branch)                                                                     `|
+| grlmo                | `git rev-list --count origin/master..\$(git_current_branch)                                                              `|
 
 ### [`Git-Duet`] specific tags
 
