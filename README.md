@@ -137,7 +137,9 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | grbc                 | `git rebase --continue                                                                                                   `|
 | grbd                 | `git rebase develop                                                                                                      `|
 | grbi                 | `git rebase -i                                                                                                           `|
-| grbm                 | `git rebase master                                                                                                       `|
+| grbm                 | `git rebase $(git_main_branch)                                                                                                       `|
+| grbom                 | `git rebase origin/$(git_main_branch)                                                                                                       `|
+| grbum                 | `git rebase upstream/$(git_main_branch)                                                                                                       `|
 | grbs                 | `git rebase --skip                                                                                                       `|
 | grev                 | `git revert                                                                                                              `|
 | grh                  | `git reset                                                                                                               `|
