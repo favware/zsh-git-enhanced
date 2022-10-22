@@ -97,7 +97,6 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | ghh                  | `git help                                                                                                                `|
 | gignore              | `git update-index --assume-unchanged                                                                                     `|
 | gignored             | `git ls-files -v \| grep "^[[:lower:]]"                                                                                  `|
-| git-svn-dcommit-push | `git svn dcommit && git push github master:svntrunk                                                                      `|
 | gk                   | `gitk --all --branches                                                                                                   `|
 | gke                  | `gitk --all \$(git log -g --pretty=%h)                                                                                   `|
 | gl                   | `git pull                                                                                                                `|
@@ -137,9 +136,9 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | grbc                 | `git rebase --continue                                                                                                   `|
 | grbd                 | `git rebase develop                                                                                                      `|
 | grbi                 | `git rebase -i                                                                                                           `|
-| grbm                 | `git rebase $(git_main_branch)                                                                                                       `|
-| grbom                 | `git rebase origin/$(git_main_branch)                                                                                                       `|
-| grbum                 | `git rebase upstream/$(git_main_branch)                                                                                                       `|
+| grbm                 | `git rebase $(git_main_branch)                                                                                           `|
+| grbom                | `git rebase origin/$(git_main_branch)                                                                                    `|
+| grbum                | `git rebase upstream/$(git_main_branch)                                                                                  `|
 | grbs                 | `git rebase --skip                                                                                                       `|
 | grev                 | `git revert                                                                                                              `|
 | grh                  | `git reset                                                                                                               `|
@@ -157,11 +156,10 @@ The git plugin provides many [aliases](#aliases) and a few useful [functions](#f
 | grup                 | `git remote update                                                                                                       `|
 | grv                  | `git remote -v                                                                                                           `|
 | gsb                  | `git status -sb                                                                                                          `|
-| gsd                  | `git svn dcommit                                                                                                         `|
+| gsd                  | `git rebase -i HEAD~$(git rev-list --count origin/$(git_main_branch)..$(git rev-parse --abbrev-ref HEAD))                `|
 | gsh                  | `git show                                                                                                                `|
 | gsi                  | `git submodule init                                                                                                      `|
 | gsps                 | `git show --pretty=short --show-signature                                                                                `|
-| gsr                  | `git svn rebase                                                                                                          `|
 | gss                  | `git status -s                                                                                                           `|
 | gst                  | `git status                                                                                                              `|
 | gsta                 | `git stash push                                                                                                          `|
