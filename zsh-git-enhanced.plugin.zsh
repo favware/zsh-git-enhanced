@@ -439,6 +439,37 @@ alias gdr='git duet-revert -v'
 alias gdrv='git duet-revert -v'
 alias gdm='git duet-merge -v'
 alias gdmg='git duet-merge -v'
+# Favware custom pack
+function pushwhatthecommit() {
+  commitwhatthecommit "$@"
+  git push
+}
+
+function commitwhatthecommit() {
+  if [ "$1" = "fixup" ]; then
+    git commit --no-verify --all --fixup "chore: $(curl -sL https://whatthecommit.com/index.txt | tr '[:upper:]' '[:lower:]')"
+  else
+    git commit --no-verify --all --message "chore: $(curl -sL https://whatthecommit.com/index.txt | tr '[:upper:]' '[:lower:]')"
+  fi
+}
+
+function gbdaf() {
+  git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete --force 2>/dev/null
+}
+
+function deletebranchregex() {
+  git branch --no-color --merged | command grep -E $1 | command xargs git branch --delete 2>/dev/null
+}
+
+function deletebranchregexforce() {
+  git branch --no-color --merged | command grep -E $1 | command xargs git branch --delete --force 2>/dev/null
+}
+
+alias gcy='commitwhatthecommit'
+alias gy='pushwhatthecommit'
+alias gbdr='deletebranchregex'
+alias gbdrf='deletebranchregexforce'
+alias gpt='git fetch --prune origin "+refs/tags/*:refs/tags/*" && git fetch -t'
 
 unset git_version
 
