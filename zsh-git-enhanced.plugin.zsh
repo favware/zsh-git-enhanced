@@ -457,7 +457,7 @@ function commitwhatthecommit() {
 }
 
 function gbdaf() {
-  git branch --no-color --merged | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete --force 2>/dev/null
+  git branch --no-color | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch --delete --force 2>/dev/null
 }
 
 function deletebranchregex() {
