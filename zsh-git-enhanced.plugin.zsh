@@ -20,7 +20,7 @@ function current_branch() {
 function git_develop_branch() {
   command git rev-parse --git-dir &>/dev/null || return
   local branch
-  for branch in dev devel develop development; do
+  for branch in dev devel develop development ontwikkel; do
     if command git show-ref -q --verify refs/heads/$branch; then
       echo $branch
       return 0
