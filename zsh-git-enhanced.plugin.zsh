@@ -282,6 +282,7 @@ alias gm='git merge'
 alias gma='git merge --abort'
 alias gmc='git merge --continue'
 alias gms="git merge --squash"
+alias gmne="git merge --no-edit"
 alias gmom='git merge origin/$(git_main_branch)'
 alias gmum='git merge upstream/$(git_main_branch)'
 alias gmtl='git mergetool --no-prompt'
